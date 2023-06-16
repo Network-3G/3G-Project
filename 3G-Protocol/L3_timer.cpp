@@ -36,7 +36,7 @@ void L3_timer_Chat_timeoutHandler(void)
 
 void L3_timer_Chat_Timer()
 {
-    uint8_t chat_waitTime = 10;
+    uint8_t chat_waitTime = 30;
     timer.attach(L3_timer_Chat_timeoutHandler, chat_waitTime);
     timerStatus = 1;
 }

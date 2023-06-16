@@ -740,7 +740,7 @@ void L3_FSMrun(void)
                 uint8_t* msg;
                 uint8_t* dataPtr=L3_LLI_getMsgPtr();
                 uint8_t size = L3_LLI_getSize();
-                pc.printf("hihihihihihihih!!!!!");
+                pc.printf("hihihihihihihih!!!!!\n");
                 verseID = L3_LLI_getSrcId();
                 //dataPtr=L3_LLI_getMsgPtr(); 
                 msg = L3_msg_getChat(dataPtr);
@@ -751,7 +751,7 @@ void L3_FSMrun(void)
                 }
                 else
                 {
-                    pc.printf("!!!!!!!!!!!!hihihihihihihih!!!!!");
+                    pc.printf("!!!!!!!!!!!!hihihihihihihih!!!!!\n");
 
                     debug("\n -------------------------------------------------\nRCVD MSG : %s (length:%i)\n -------------------------------------------------\n",
                           msg, size);
