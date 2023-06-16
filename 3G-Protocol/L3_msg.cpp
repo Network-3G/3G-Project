@@ -64,7 +64,7 @@ int Msg_checkIfCplCON_Rcvd(uint8_t* msg) // event e
 
 int Msg_checkIfReqDIS_Rcvd(uint8_t* msg) // event j
 {
-    return ((msg[MSG_OFFSET_TYPE] == MSG_TYPE_DIS)&&(msg[MSG_OFFSET_RSC] == MSG_RSC_Req)&&(msg[MSG_OFFSET_Acp] == MSG_ACP_REJECT));
+    return ((msg[MSG_OFFSET_TYPE] == MSG_TYPE_DIS)&&(msg[MSG_OFFSET_RSC] == MSG_RSC_Req)&&(msg[MSG_OFFSET_Acp] == MSG_ACP_ACCEPT));
 }
 
 int Msg_checkIfSetDIS_Rcvd(uint8_t* msg) // event k
@@ -100,6 +100,8 @@ uint8_t Msg_encodeDISPDU(uint8_t* msg_DISPDU, int rsc){
     msg_DISPDU[MSG_OFFSET_TYPE] = MSG_TYPE_DIS;
     msg_DISPDU[MSG_OFFSET_RSC] = rsc;
     msg_DISPDU[MSG_OFFSET_Acp] = MSG_ACP_ACCEPT;
+    printf("encodedispdu\n");
+
     return L3_PDU_SIZE;
 }
 

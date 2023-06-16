@@ -484,11 +484,13 @@ void L3_FSMrun(void)
 
     // DIS STATE
     case STATE_DIS_WAIT:
+        //pc.printf("this is state dis wait\n");
 
         // l
         if (L3_event_checkEventFlag(CplDIS_Rcvd))
         {
             {
+                pc.printf("this is llllllll\n");
                 verseID = L3_LLI_getSrcId(); // accept의 id
                 if (verseID != conID)
                 {
@@ -499,14 +501,16 @@ void L3_FSMrun(void)
                     pc.printf("STATE CHANGED DIS 2 IDLE & ComDIS");
                     //cond_IDinput = 0;
                     main_state = STATE_IDLE;
-                    L3_event_clearEventFlag(CplDIS_Rcvd);
+                    
                 }
             }
+            L3_event_clearEventFlag(CplDIS_Rcvd);
         }
 
         // k
         else if (L3_event_checkEventFlag(SetDIS_Rcvd))
         {
+            pc.printf("this iskkkkkkkk\n");
             verseID = L3_LLI_getSrcId(); // accept의 id
             if (verseID != conID)
             {
@@ -523,8 +527,9 @@ void L3_FSMrun(void)
 
                // cond_IDinput = 0;
                 main_state = STATE_IDLE;
-                L3_event_clearEventFlag(SetDIS_Rcvd);
+                
             }
+            L3_event_clearEventFlag(SetDIS_Rcvd);
         }
 
         // DIS 대기로 돌아오는 거
@@ -621,8 +626,10 @@ void L3_FSMrun(void)
             {
                 Msg_encodeDISPDU(pdu, MSG_RSC_Req);
                 L3_LLI_dataReqFunc(pdu, L3_PDU_SIZE, myDestId);
-
+                pc.printf("dis wait~~~~~~this is i\n");
+               
                 main_state = STATE_DIS_WAIT;
+                
                 L3_event_clearEventFlag(Chat_Timer_Expire);
                
             }
@@ -647,6 +654,7 @@ void L3_FSMrun(void)
                 L3_LLI_dataReqFunc(pdu, L3_PDU_SIZE, myDestId);
 
                 // main_state = MAINSTATE_TX;
+                pc.printf("dis wait~~~~~~this is jjjjjjjjjjjjjjjjjjjjj\n");
                 main_state = STATE_DIS_WAIT;
                 // flag_needPrint = 1;
 
@@ -654,7 +662,7 @@ void L3_FSMrun(void)
 
                 L3_event_clearEventFlag(ReqDIS_Rcvd);
             }
-            flag_needPrint == 1;
+            //flag_needPrint == 1;
            //pc.printf("\n -------------------------------------------------\nRCVD from dest-j  : %s (length:%i, seq:%i)\n -------------------------------------------------\n",  L3_msg_getWord(dataPtr), size, L3_msg_getSeq(dataPtr));
         }
         
@@ -674,7 +682,7 @@ void L3_FSMrun(void)
                 Msg_encodeCONPDU(pdu, MSG_RSC_Set, MSG_ACP_REJECT);
                 L3_LLI_dataReqFunc(pdu, L3_PDU_SIZE, verseID);
 
-                flag_needPrint = 1;
+               // flag_needPrint = 1;
 
                 pc.printf("\n other id \n");
                 // L3_event_clearEventFlag(L3_event_dataRcvd);
@@ -740,7 +748,6 @@ void L3_FSMrun(void)
                 uint8_t* msg;
                 uint8_t* dataPtr=L3_LLI_getMsgPtr();
                 uint8_t size = L3_LLI_getSize();
-                pc.printf("hihihihihihihih!!!!!\n");
                 verseID = L3_LLI_getSrcId();
                 //dataPtr=L3_LLI_getMsgPtr(); 
                 msg = L3_msg_getChat(dataPtr);
@@ -751,14 +758,12 @@ void L3_FSMrun(void)
                 }
                 else
                 {
-                    pc.printf("!!!!!!!!!!!!hihihihihihihih!!!!!\n");
-
                     debug("\n -------------------------------------------------\nRCVD MSG : %s (length:%i)\n -------------------------------------------------\n",
                           msg, size);
                     //pc.printf("\n -------------------------------------------------\nRCVD from dest-1  : %s (length:%i, seq:%i)\n -------------------------------------------------\n",  
                     //L3_msg_getWord(dataPtr), size, L3_msg_getSeq(dataPtr));
 
-                    pc.printf("Give a word to send : \n");
+                    pc.printf("Give a word to send this is h : \n");
 
                     
                 }
@@ -822,11 +827,11 @@ void L3_FSMrun(void)
                 pc.printf("m");
                 L3_event_clearEventFlag(Other_PDU_Rcvd);
             }*/ 
-            else if (flag_needPrint == 1)
+           /* else if (flag_needPrint == 1)
                 {
                     pc.printf("Give a word to send : ");
                     flag_needPrint = 0;
-                }  
+                }  */
             break;
 
         default:
