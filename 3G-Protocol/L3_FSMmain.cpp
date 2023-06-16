@@ -827,6 +827,7 @@ void L3_FSMrun(void)
                 pc.printf("m");
                 L3_event_clearEventFlag(Other_PDU_Rcvd);
             }*/ 
+            //얘 없앴음
            /* else if (flag_needPrint == 1)
                 {
                     pc.printf("Give a word to send : ");
