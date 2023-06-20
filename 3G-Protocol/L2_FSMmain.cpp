@@ -194,10 +194,12 @@ void L2_FSMrun(void)
                 uint8_t flag_end = L2_msg_checkIfEndData(dataPtr);
 
                 //L3_LLI_dataInd(L2_msg_getWord(dataPtr), srcId, size-L2_MSG_OFFSET_DATA, L2_LLI_getSnr(), L2_LLI_getRssi());
+#if 0                
 #ifndef DISABLE_ARQ                
                 if (brflag == 0 && seqNum != L2_msg_getSeq(dataPtr))
                     debug("[L3][WARNING] Invalid PDU SN (%i) while (%i) is required! discarding it...\n", L2_msg_getSeq(dataPtr), seqNum);
                 else
+#endif
 #endif
                     L2_aggregateData(dataPtr, srcId, size, brflag, flag_end);
 
@@ -344,6 +346,7 @@ void L2_FSMrun(void)
                     L3_LLI_dataCnf(0);
                     //arqPdu clear
                     //retxCnt clear
+
                 }
                 else //retx < max, then goto TX for retransmission
                 {
@@ -366,10 +369,12 @@ void L2_FSMrun(void)
                 uint8_t flag_end = L2_msg_checkIfEndData(dataPtr);
 
                 //L3_LLI_dataInd(L2_msg_getWord(dataPtr), srcId, size-L2_MSG_OFFSET_DATA, L2_LLI_getSnr(), L2_LLI_getRssi());
+#if 0
 #ifndef DISABLE_ARQ                
                 if (brflag == 0 && seqNum != L2_msg_getSeq(dataPtr))
                     debug("[L3][WARNING] Invalid PDU SN (%i) while (%i) is required! discarding it...\n", L2_msg_getSeq(dataPtr), seqNum);
                 else
+#endif
 #endif
                     L2_aggregateData(dataPtr, srcId, size, brflag, flag_end);            
 

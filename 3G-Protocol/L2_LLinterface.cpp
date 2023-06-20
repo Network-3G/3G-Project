@@ -33,8 +33,8 @@ void L2_LLI_dataCnfFunc(int err)
 void L2_LLI_dataIndFunc(uint8_t srcId, uint8_t *dataPtr, uint8_t size, uint8_t BR)
 {
     debug_if(DBGMSG_L2, "\n[L2]  --> DATA IND : src:%i, size:%i type : %i BR : %i\n", srcId, size, dataPtr[0], BR);
-
-    if ((float)rand() / RAND_MAX > L2_LLI_PKT_LOSS)
+    
+    if (1)// ((float)rand() / RAND_MAX > L2_LLI_PKT_LOSS)
     {
         memcpy(rcvdData, dataPtr, size * sizeof(uint8_t));
         rcvdSrc = srcId;

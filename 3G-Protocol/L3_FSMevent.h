@@ -1,13 +1,5 @@
 typedef enum L3_event
 {
-    /*L3_event_dataTxDone = 0,
-    L3_event_ackTxDone = 1,
-    L3_event_ackRcvd = 2,
-    L3_event_msgRcvd = 3,
-    L3_event_dataToSend = 4,
-    L3_event_arqTimeout = 5,
-    L3_event_reconfigSrcId = 6,
-    L3_event_dataToSendBuffer = 7*/
 
     // IDLE
     ReqCON_Rcvd = 2,
@@ -31,10 +23,9 @@ typedef enum L3_event
     // STATE CHAT
     Chat_Timer_Expire = 14,
     ReqDIS_Rcvd = 15,
-    ReqCON_Other_Rcvd = 16,
     Chat_Rcvd = 17,
     SDU_Rcvd = 18, 
-    Other_PDU_Rcvd =19
+
 
 } L3_event_e;
 

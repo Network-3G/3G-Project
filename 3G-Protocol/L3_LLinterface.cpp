@@ -47,12 +47,6 @@ void L3_LLI_dataInd(uint8_t* dataPtr, uint8_t srcId, uint8_t size, int8_t snr, i
     {
         L3_event_setEventFlag(CplCON_Rcvd); 
     }
-    
-/*    else if (Msg_checkIfotherPDU(dataPtr))  // event f 
-    { 
-        L3_event_setEventFlag(Other_ID_ReqCON); 
-    }*/
-
 
     else if (Msg_checkIfReqDIS_Rcvd(dataPtr)) //event j
     {
@@ -73,10 +67,6 @@ void L3_LLI_dataInd(uint8_t* dataPtr, uint8_t srcId, uint8_t size, int8_t snr, i
     {
         L3_event_setEventFlag(Chat_Rcvd);
     }
-/*    else if (Msg_checkIfotherPDU(dataPtr)==0 ) // event m
-    {      
-        L3_event_setEventFlag(ReqCON_Other_Rcvd);
-    }*/
 
   }
 
